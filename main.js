@@ -1,6 +1,7 @@
 const { app, BrowserWindow } = require("electron");
 const nodePath = require("path");
-require("./monitorChatLog.js");
+require("./scripts/monitorChatLog.js");
+require('electron-reload')(__dirname);
 
 let window
 function createWindow() {
@@ -20,6 +21,7 @@ function createWindow() {
 
 app.whenReady().then(() => {
   window = createWindow()
+  /* window.setMenu(null) */
 });
 
 app.on("window-all-closed", () => {

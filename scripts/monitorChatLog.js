@@ -1,5 +1,4 @@
-/* const { watch } = require('chokidar') */
-const logProcessor = require('./logProcessor.js')
+const { processLogContent } = require('./logProcessor.js')
 const fs = require('fs')
 
 const logFile = 'D:/Program Files/EuroAion/Chat.log'
@@ -11,9 +10,6 @@ const handleFileChange = async () => {
   try {
     const newFileSize = fs.statSync(logFile).size;
     const bytesToRead = newFileSize - fileSize;
-
-    console.log('bytesToRead', bytesToRead)
-    console.log('FileSize', fileSize)
 
     // if there is new content in the file
     if (bytesToRead > 0) {
@@ -31,7 +27,7 @@ const handleFileChange = async () => {
       fs.closeSync(fileDescriptor);
 
       const newContent = buffer.toString('utf8');
-      const separatedLogs = await logProcessor.processLogContent(newContent);
+      processLogContent(newContent);
     }
     fileSize = newFileSize;
   } catch (error) {

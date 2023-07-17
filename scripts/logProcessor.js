@@ -1,11 +1,5 @@
 const { BrowserWindow } = require('electron')
 
-function sendDataToRenderer(data) {
-  const mainWindow = BrowserWindow.getAllWindows()[0]; // Get the reference to the main window
-  console.log(data)
-  mainWindow.webContents.send('sendData', data);
-};
-
 function processLogContent(logContent) {
   let processedSkillData = []
   let splittedLogs = getSplittedLogs(logContent)
@@ -17,6 +11,11 @@ function processLogContent(logContent) {
   })
   sendDataToRenderer(processedSkillData)
 }
+
+function sendDataToRenderer(data) {
+  const mainWindow = BrowserWindow.getAllWindows()[0]; // Get the reference to the main window
+  mainWindow.webContents.send('sendData', data);
+};
 
 function getSplittedLogs(logContent) {
   // Split logs by timestamp and trim them
@@ -38,7 +37,9 @@ function getTargetName(log) {
 }
 
 function getSkillValue(log) {
-  return log.match(/(?<=inflicted |recovered )[\d,]*/)[0]
+  let value = log.match(/(?<=inflicted |recovered )[\d,]*/)[0]
+  value = value.replaceAll(',', '')
+  return value
 }
 
 function getSkillName(log) {
@@ -69,15 +70,13 @@ function isCriticalHit(log) {
 function buildSkillData(log) {
   return {
     timestamp: getTimeStamp(log),
-    skillName: getSkillName(log),
-    skillType: getSkillType(log),
-    skillValue: getSkillValue(log),
+    name: getSkillName(log),
+    type: getSkillType(log),
+    value: getSkillValue(log),
     isCriticalHit: isCriticalHit(log),
     player: getPlayerName(log),
     target: getTargetName(log)
   }
 }
 
-module.exports = {
-  processLogContent
-}
+module.exports = { processLogContent }

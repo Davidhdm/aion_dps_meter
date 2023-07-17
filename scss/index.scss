@@ -1,0 +1,105 @@
+@import "./variables";
+@import "./mixins";
+
+body {
+  background: $dark3;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  scrollbar-width: none !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000;
+
+  &:hover {
+    background-color: $dark1;
+  }
+
+  &:active {
+    background-color: $dark2;
+  }
+}
+
+.dpsmeter-container {
+  position: relative;
+  top: 40px;
+}
+
+.filters-container {
+  position: fixed;
+  z-index: 5;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.filter {
+  padding: 4px;
+  display: flex;
+  height: 40px;
+  width: 50%;
+  transition: 0.15s background-color;
+
+  &.filter-class {
+    background-color: $blue2;
+  }
+  &.filter-enemy {
+    background-color: $blue3;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $blue1;
+  }
+}
+
+.filter-enemy {
+  text-align: right;
+}
+
+.filter-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 4px;
+  white-space: nowrap;
+  overflow-inline: auto;
+}
+
+.player-element {
+  @include base-item;
+  flex-direction: row;
+  width: 100%;
+}
+
+.player-class {
+  height: 100%;
+
+  &>img {
+    height: 100%;
+  }
+}
+
+.player-name {
+  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 5px;
+}
+
+.player-damage {
+  text-align: right;
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 10px;
+}

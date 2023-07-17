@@ -1,0 +1,12 @@
+@mixin base-item {
+  padding: 4px;
+  display: flex;
+  height: 40px;
+  border-bottom: $dark2 solid 1px;
+  transition: 0.15s background-color;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $dark1;
+  }
+}
