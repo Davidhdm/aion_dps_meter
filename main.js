@@ -1,14 +1,16 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const nodePath = require("path");
-require("./scripts/monitorChatLog.js");
+require("./scripts/main/monitorChatLog.js");
 require('electron-reload')(__dirname);
 
 let window
 function createWindow() {
   const win = new BrowserWindow({
-    // icon: "img\\icon.png",
-    width: 800,
+    icon: "images/pollo-facherito.jpg",
+    frame: false,
+    width: 350,
     height: 600,
+    resizable: false,
     webPreferences: {
       nodeIntegration: true,
       preload: nodePath.join(__dirname, "preload.js"),
@@ -35,3 +37,8 @@ app.on("activate", () => {
     createWindow();
   }
 });
+
+ipcMain.on("minimize", () => {
+  BrowserWindow.getAllWindows().forEach(window => window.minimize());
+});
+

@@ -1,6 +1,11 @@
 @import "./variables";
 @import "./mixins";
 
+@import "./header/windowFrame.scss";
+@import "./header/topMenu.scss";
+
+@import "./dps_container/dpsContainer.scss";
+
 body {
   background: $dark3;
   color: white;
@@ -13,8 +18,16 @@ body {
   scrollbar-width: none !important;
 }
 
+:not(input):not(textarea),
+:not(input):not(textarea)::after,
+:not(input):not(textarea)::before {
+  -webkit-user-select: none;
+  user-select: none;
+  /* cursor: default; */
+}
+
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
   background-color: white;
 }
 
@@ -30,76 +43,19 @@ body {
   }
 }
 
-.dpsmeter-container {
-  position: relative;
-  top: 40px;
-}
-
-.filters-container {
+.app-header {
   position: fixed;
+  width: 100%;
   z-index: 5;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
 }
 
-.filter {
-  padding: 4px;
-  display: flex;
-  height: 40px;
-  width: 50%;
-  transition: 0.15s background-color;
-
-  &.filter-class {
-    background-color: $blue2;
-  }
-  &.filter-enemy {
-    background-color: $blue3;
-  }
-
-  &:hover {
-    cursor: pointer;
-    background-color: $blue1;
-  }
-}
-
-.filter-enemy {
-  text-align: right;
-}
-
-.filter-label {
-  display: inline-flex;
-  align-items: center;
-  padding: 0 4px;
+.overflow-autoscroll {
   white-space: nowrap;
-  overflow-inline: auto;
-}
-
-.player-element {
-  @include base-item;
-  flex-direction: row;
-  width: 100%;
-}
-
-.player-class {
-  height: 100%;
-
-  &>img {
-    height: 100%;
-  }
-}
-
-.player-name {
-  text-align: left;
-  display: inline-flex;
-  align-items: center;
-  margin-left: 5px;
-}
-
-.player-damage {
-  text-align: right;
-  display: inline-flex;
-  align-items: center;
-  margin-left: auto;
-  margin-right: 10px;
+  overflow-x: hidden;
+  width: fit-content;
+  display: block;
+  /* @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  } */
 }

@@ -1,0 +1,42 @@
+.dpsmeter-container {
+  position: relative;
+  top: 74px;
+  height: calc(100vh - 74px);
+  overflow-y: auto;
+}
+
+.player-element {
+  @include base-item;
+  flex-direction: row;
+  width: 100%;
+}
+
+.player-class {
+  height: 100%;
+
+  &>img {
+    height: 100%;
+  }
+
+  &.unknown, &.unknown_class {
+    padding: 2px;
+  }
+}
+
+.player-name {
+  overflow: hidden;
+  text-align: left;
+  /* display: flex;
+  align-items: center; */
+  margin: auto 25px auto 5px;
+  cursor: inherit;
+}
+
+.player-damage {
+  text-align: right;
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 10px;
+  cursor: inherit;
+}

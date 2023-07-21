@@ -1,0 +1,59 @@
+.top-menu {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.settings-button, .reset-button {
+  width: 40px;
+  height: 40px;
+  background-color: $dark1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    background: $dark2;
+  }
+
+  img {
+    cursor: pointer;
+  }
+}
+.reset-button {
+  background-color: $red3;
+  &:hover {
+    background: $red1;
+  }
+}
+
+.filter {
+  padding: 4px;
+  display: flex;
+  height: 40px;
+  /* width: auto; */
+  flex-grow: 1;
+  transition: 0.15s background-color;
+
+  &.filter-class {
+    background-color: $blue2;
+  }
+
+  &.filter-target {
+    background-color: $blue3;
+    text-align: right;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $blue1;
+  }
+}
+
+.filter-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 6px;
+  cursor: pointer;
+}

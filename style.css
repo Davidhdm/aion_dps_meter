@@ -1,71 +1,108 @@
-body {
-  background: rgb(18, 18, 18);
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
+.app-name-container {
+  display: flex;
+  align-items: center;
+  width: calc(100vw - 80px);
+  -webkit-app-region: drag;
+}
+.app-name-container img {
+  width: 40px;
+}
+.app-name-container .app-name {
+  margin-left: 10px;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  scrollbar-width: none !important;
+.window-frame {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
 }
 
-::-webkit-scrollbar {
-  width: 6px;
-  background-color: white;
+.manage-app-buttons {
+  display: flex;
+  height: 100%;
 }
-
-::-webkit-scrollbar-thumb {
-  background-color: #000;
+.manage-app-buttons > div {
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(56, 56, 56);
-}
-::-webkit-scrollbar-thumb:active {
+.manage-app-buttons .minimize-app-button {
   background-color: rgb(38, 38, 38);
 }
-
-.dpsmeter-container {
-  position: relative;
-  top: 40px;
+.manage-app-buttons .minimize-app-button:hover {
+  background-color: rgb(56, 56, 56);
+}
+.manage-app-buttons .close-app-button {
+  background-color: rgb(253, 47, 47);
+}
+.manage-app-buttons .close-app-button:hover {
+  background-color: rgb(255, 117, 117);
 }
 
-.filters-container {
-  position: fixed;
-  z-index: 5;
+.top-menu {
   display: flex;
   width: 100%;
   justify-content: space-between;
+}
+
+.settings-button, .reset-button {
+  width: 40px;
+  height: 40px;
+  background-color: rgb(56, 56, 56);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.settings-button:hover, .reset-button:hover {
+  background: rgb(38, 38, 38);
+}
+.settings-button img, .reset-button img {
+  cursor: pointer;
+}
+
+.reset-button {
+  background-color: rgb(253, 47, 47);
+}
+.reset-button:hover {
+  background: rgb(255, 117, 117);
 }
 
 .filter {
   padding: 4px;
   display: flex;
   height: 40px;
-  width: 50%;
+  /* width: auto; */
+  flex-grow: 1;
   transition: 0.15s background-color;
 }
 .filter.filter-class {
   background-color: rgb(69, 111, 248);
 }
-.filter.filter-enemy {
+.filter.filter-target {
   background-color: rgb(43, 92, 252);
+  text-align: right;
 }
 .filter:hover {
   cursor: pointer;
   background-color: rgb(111, 145, 255);
 }
 
-.filter-enemy {
-  text-align: right;
-}
-
 .filter-label {
   display: inline-flex;
   align-items: center;
-  padding: 0 4px;
-  white-space: nowrap;
-  overflow-inline: auto;
+  padding: 0 6px;
+  cursor: pointer;
+}
+
+.dpsmeter-container {
+  position: relative;
+  top: 74px;
+  height: calc(100vh - 74px);
+  overflow-y: auto;
 }
 
 .player-element {
@@ -88,12 +125,17 @@ body {
 .player-class > img {
   height: 100%;
 }
+.player-class.unknown, .player-class.unknown_class {
+  padding: 2px;
+}
 
 .player-name {
+  overflow: hidden;
   text-align: left;
-  display: inline-flex;
-  align-items: center;
-  margin-left: 5px;
+  /* display: flex;
+  align-items: center; */
+  margin: auto 25px auto 5px;
+  cursor: inherit;
 }
 
 .player-damage {
@@ -102,6 +144,59 @@ body {
   align-items: center;
   margin-left: auto;
   margin-right: 10px;
+  cursor: inherit;
+}
+
+body {
+  background: rgb(18, 18, 18);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  scrollbar-width: none !important;
+}
+
+:not(input):not(textarea),
+:not(input):not(textarea)::after,
+:not(input):not(textarea)::before {
+  -webkit-user-select: none;
+  user-select: none;
+  /* cursor: default; */
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(56, 56, 56);
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: rgb(38, 38, 38);
+}
+
+.app-header {
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+}
+
+.overflow-autoscroll {
+  white-space: nowrap;
+  overflow-x: hidden;
+  width: fit-content;
+  display: block;
+  /* @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  } */
 }
 
 /*# sourceMappingURL=style.css.map */

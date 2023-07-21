@@ -1,0 +1,50 @@
+.app-name-container {
+  display: flex;
+  align-items: center;
+  width: calc(100vw - 80px);
+
+  img {
+    width: 40px;
+  }
+
+  .app-name {
+    margin-left: 10px;
+  }
+  -webkit-app-region: drag;
+}
+
+.window-frame {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+}
+
+.manage-app-buttons {
+  display: flex;
+  height: 100%;
+
+  &>div {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .minimize-app-button {
+    background-color: $dark2;
+
+    &:hover {
+      background-color: $dark1;
+    }
+  }
+
+  .close-app-button {
+    background-color: $red3;
+
+    &:hover {
+      background-color: $red1;
+    }
+  }
+}

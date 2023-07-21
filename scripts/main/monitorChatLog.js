@@ -1,7 +1,7 @@
 const { processLogContent } = require('./logProcessor.js')
 const fs = require('fs')
 
-const logFile = 'D:/Program Files/EuroAion/Chat.log'
+const logFile = 'D:/AionRepublic/aion/Chat.log'
 let logExists = fs.existsSync(logFile);
 let fileSize;
 
@@ -47,7 +47,7 @@ const debounce = (func, delay) => {
   };
 };
 
-const debouncedHandleFileChange = debounce(handleFileChange, 100);
+const debouncedHandleFileChange = debounce(handleFileChange, 10);
 
 async function checkLogExistence() {
   while (!logExists) {

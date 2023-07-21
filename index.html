@@ -1,268 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <meta
-      http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>Aion DPS meter</title>
-  </head>
-  <body>
-    <div class="filters-container">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="app-header">
+    <div class="window-frame">
+      <div class="app-name-container">
+        <img src="./images/pollo-facherito.jpg">
+        <h4 class="app-name">NegaoMeter 1.0</h4>
+      </div>
+      <div class="manage-app-buttons">
+        <div class="minimize-app-button"><img src="./svgs/minimize.svg"></div>
+        <div class="close-app-button"><img src="./svgs/cross.svg"></div>
+      </div>
+    </div>
+    <div class="top-menu">
+      <div class="reset-button"><img src="./svgs/trash.svg"></img></div>
       <div class="filter filter-class">
         <span class="filter-label">Filter by class</span>
       </div>
-      <div class="filter filter-enemy">
+      <div class="filter filter-target">
         <span class="filter-label">Filter by target</span>
       </div>
+      <div class="settings-button"><img src="./svgs/settings.svg"></img></div>
     </div>
-    <div class="dpsmeter-container">
-      <div class="player-element" id="player-id-2384">
-        <div class="player-class">
-          <img src="images/gladiator.png" />
-        </div>
-        <span class="player-name">env</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-435978">
-        <div class="player-class">
-          <img src="images/gunner.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">123123</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-      <div class="player-element" id="player-id-3252987">
-        <div class="player-class">
-          <img src="images/assassin.png" />
-        </div>
-        <span class="player-name">Player</span>
-        <span class="player-damage">2359</span>
-      </div>
-    </div>
-    <script src="./scripts/frontend.js" type="module"></script>
-  </body>
+  </header>
+  <main class="dpsmeter-container">
+  </main>
+  <script src="./scripts/mainFrontend.js" type="module"></script>
+</body>
+
 </html>
