@@ -4,7 +4,8 @@
   justify-content: space-between;
 }
 
-.settings-button, .reset-button {
+.settings-button,
+.reset-button {
   width: 40px;
   height: 40px;
   background-color: $dark1;
@@ -21,15 +22,17 @@
     cursor: pointer;
   }
 }
+
 .reset-button {
   background-color: $red3;
+
   &:hover {
     background: $red1;
   }
 }
 
 .filter {
-  padding: 4px;
+  /* padding: 4px; */
   display: flex;
   height: 40px;
   /* width: auto; */
@@ -38,22 +41,79 @@
 
   &.filter-class {
     background-color: $blue2;
+    position: relative;
   }
 
   &.filter-target {
     background-color: $blue3;
     text-align: right;
   }
+  
+}
+
+.filter-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
 
   &:hover {
-    cursor: pointer;
     background-color: $blue1;
   }
 }
 
-.filter-label {
-  display: inline-flex;
+.filter-class-img {
+  display: flex;
   align-items: center;
-  padding: 0 6px;
-  cursor: pointer;
+  justify-content: center;
+  height: 100%;
+  aspect-ratio: 1/1;
+
+  &>img {
+    height: 85%;
+  }
+
+  &.none>img {
+    height: 50%;
+  }
+}
+
+.filter-class-options {
+  background: $blue1;
+  position: absolute;
+  width: 100%;
+  top: 40px;
+  left: 0;
+  display: none;
+  flex-direction: column;
+
+  .filter-class-option {
+    display: flex;
+
+    height: 40px;
+
+    &:hover {
+      background-color: $blue2;
+    }
+
+    .filter-class-name {
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+}
+
+.filter-class-remove {
+  display: none;
+  align-items:center;
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  margin-right: 8px;
+  & > img {
+    height: 100%;
+  }
+  &:hover {
+    background-color: $red2;
+  }
 }

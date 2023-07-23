@@ -48,7 +48,8 @@
   justify-content: space-between;
 }
 
-.settings-button, .reset-button {
+.settings-button,
+.reset-button {
   width: 40px;
   height: 40px;
   background-color: rgb(56, 56, 56);
@@ -57,10 +58,12 @@
   justify-content: center;
   cursor: pointer;
 }
-.settings-button:hover, .reset-button:hover {
+.settings-button:hover,
+.reset-button:hover {
   background: rgb(38, 38, 38);
 }
-.settings-button img, .reset-button img {
+.settings-button img,
+.reset-button img {
   cursor: pointer;
 }
 
@@ -72,7 +75,7 @@
 }
 
 .filter {
-  padding: 4px;
+  /* padding: 4px; */
   display: flex;
   height: 40px;
   /* width: auto; */
@@ -81,21 +84,71 @@
 }
 .filter.filter-class {
   background-color: rgb(69, 111, 248);
+  position: relative;
 }
 .filter.filter-target {
   background-color: rgb(43, 92, 252);
   text-align: right;
 }
-.filter:hover {
+
+.filter-label {
+  display: flex;
+  align-items: center;
   cursor: pointer;
+  width: 100%;
+}
+.filter-label:hover {
   background-color: rgb(111, 145, 255);
 }
 
-.filter-label {
+.filter-class-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  aspect-ratio: 1/1;
+}
+.filter-class-img > img {
+  height: 85%;
+}
+.filter-class-img.none > img {
+  height: 50%;
+}
+
+.filter-class-options {
+  background: rgb(111, 145, 255);
+  position: absolute;
+  width: 100%;
+  top: 40px;
+  left: 0;
+  display: none;
+  flex-direction: column;
+}
+.filter-class-options .filter-class-option {
+  display: flex;
+  height: 40px;
+}
+.filter-class-options .filter-class-option:hover {
+  background-color: rgb(69, 111, 248);
+}
+.filter-class-options .filter-class-option .filter-class-name {
   display: inline-flex;
   align-items: center;
-  padding: 0 6px;
-  cursor: pointer;
+}
+
+.filter-class-remove {
+  display: none;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  margin-right: 8px;
+}
+.filter-class-remove > img {
+  height: 100%;
+}
+.filter-class-remove:hover {
+  background-color: rgb(255, 76, 76);
 }
 
 .dpsmeter-container {

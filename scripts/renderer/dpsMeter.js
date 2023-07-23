@@ -99,9 +99,9 @@ function createPlayerElement(player) {
   const playerNameSpan = document.createElement("span");
   const playerDamage = document.createElement("div");
 
-  playerElement.className = "player-element overflow-autoscroll-parent";
+  playerElement.className = `player-element player-${player.class} overflow-autoscroll-parent`;
   playerElement.id = `player-id-${player.id}`;
-  playerClass.className = `player-class ${player.class}`;
+  playerClass.className = "player-class";
   playerClass.innerHTML = `<img src="images/${player.class}.png">`;
   playerName.className = "player-name";
   playerNameSpan.className = "overflow-autoscroll";
@@ -119,6 +119,10 @@ function createPlayerElement(player) {
   if (playerNameIsOverflowing) {
     addAutoScroll(playerElement, playerNameSpan);
   }
+
+  if (activeClassFilter !== "none" && activeClassFilter !== player.class) {
+    playerElement.style.display = "none";
+  }
 }
 
 const resetDpsBtn = document.querySelector(".reset-button");
@@ -128,3 +132,76 @@ resetDpsBtn.addEventListener("click", () => {
   playerId = 0;
   dpsMeterContainer.innerHTML = "";
 });
+
+let filterMenuIsOpen = false;
+let activeClassFilter = "none";
+
+const filterClassBtn = document.querySelector(".filter-label");
+const filterClassOptions = document.querySelector(".filter-class-options");
+const filterClassLabelImg = document.querySelector(
+  ".filter-label > .filter-class-img"
+);
+const filterClassChildImg = filterClassLabelImg.children[0];
+const filterClassName = document.querySelector(
+  ".filter-label > .filter-class-name"
+);
+const filterClassRemoveBtn = document.querySelector(".filter-class-remove");
+
+function openFilterClassMenu() {
+  filterMenuIsOpen = true;
+  filterClassOptions.style.display = "flex";
+}
+
+function closeFilterClassMenu() {
+  filterMenuIsOpen = false;
+  filterClassOptions.style.display = "none";
+}
+
+filterClassBtn.addEventListener("click", () => {
+  if (filterMenuIsOpen) {
+    closeFilterClassMenu();
+  } else {
+    openFilterClassMenu();
+  }
+});
+
+document.querySelectorAll(".filter-class-option").forEach((option) => {
+  option.addEventListener("click", () => {
+    closeFilterClassMenu();
+    filterDpsByClass(option.classList[1], option.innerText);
+  });
+});
+
+function filterDpsByClass(playerClass, classText) {
+  document.querySelectorAll(".player-element").forEach((playerElement) => {
+    console.log(playerElement)
+    if (playerElement.classList.contains(`player-${playerClass}`)) {
+      playerElement.style.display = "flex";
+    } else {
+      playerElement.style.display = "none";
+    }
+  });
+  activeClassFilter = playerClass;
+  filterClassLabelImg.classList.remove("none");
+  filterClassChildImg.attributes.src.value = `images/${playerClass}.png`;
+  filterClassName.innerText = classText.trim();
+  filterClassRemoveBtn.style.display = "flex";
+}
+
+filterClassRemoveBtn.addEventListener("click", (event) => {
+  event.stopPropagation();
+  closeFilterClassMenu();
+  removeClassFilter();
+});
+
+function removeClassFilter() {
+  activeClassFilter = "none";
+  filterClassRemoveBtn.style.display = "none";
+  filterClassName.innerText = "Filter by class";
+  filterClassChildImg.attributes.src.value = "svgs/filter.svg";
+  filterClassLabelImg.classList.add("none");
+
+  document.querySelectorAll(".player-element").forEach((playerElement) => {
+    playerElement.style.display = "flex";
+  });
+}
