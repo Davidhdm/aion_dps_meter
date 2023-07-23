@@ -148,8 +148,9 @@ const filterClassName = document.querySelector(
 const filterClassRemoveBtn = document.querySelector(".filter-class-remove");
 
 function openFilterClassMenu() {
-  filterMenuIsOpen = true;
   filterClassOptions.style.display = "flex";
+  hideOnClickOutside(filterClassOptions);
+  filterMenuIsOpen = true;
 }
 
 function closeFilterClassMenu() {
@@ -173,8 +174,9 @@ document.querySelectorAll(".filter-class-option").forEach((option) => {
 });
 
 function filterDpsByClass(playerClass, classText) {
+  document.removeEventListener("click", outsideClickListener);
+
   document.querySelectorAll(".player-element").forEach((playerElement) => {
-    console.log(playerElement)
     if (playerElement.classList.contains(`player-${playerClass}`)) {
       playerElement.style.display = "flex";
     } else {
@@ -204,4 +206,21 @@ function removeClassFilter() {
   document.querySelectorAll(".player-element").forEach((playerElement) => {
     playerElement.style.display = "flex";
   });
+}
+
+let outsideClickListener;
+function hideOnClickOutside(element) {
+  outsideClickListener = (event) => {
+    filterMenuIsOpen = !filterMenuIsOpen;
+    if (!element.contains(event.target) && filterMenuIsOpen) {
+      closeFilterClassMenu();
+      removeClickListener();
+    }
+  };
+
+  const removeClickListener = () => {
+    document.removeEventListener("click", outsideClickListener);
+  };
+  // event is fired immediately after adding listener somehow
+  document.addEventListener("click", outsideClickListener);
 }
