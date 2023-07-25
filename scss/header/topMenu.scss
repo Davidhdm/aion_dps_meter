@@ -86,7 +86,9 @@
   left: 0;
   display: none;
   flex-direction: column;
-
+  &.open {
+    display: flex;
+  }
   .filter-class-option {
     display: flex;
 

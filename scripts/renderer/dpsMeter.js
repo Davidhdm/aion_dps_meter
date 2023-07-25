@@ -121,7 +121,7 @@ function createPlayerElement(player) {
   }
 
   if (activeClassFilter !== "none" && activeClassFilter !== player.class) {
-    playerElement.style.display = "none";
+    playerElement.classList.add("hidden");
   }
 }
 
@@ -148,22 +148,32 @@ const filterClassName = document.querySelector(
 const filterClassRemoveBtn = document.querySelector(".filter-class-remove");
 
 function openFilterClassMenu() {
-  filterClassOptions.style.display = "flex";
-  hideOnClickOutside(filterClassOptions);
+  filterClassOptions.classList.add("open");
   filterMenuIsOpen = true;
+  hideOnClickOutside(filterClassOptions);
 }
 
 function closeFilterClassMenu() {
+  filterClassOptions.classList.remove("open");
   filterMenuIsOpen = false;
-  filterClassOptions.style.display = "none";
+  controller.abort();
 }
 
 filterClassBtn.addEventListener("click", () => {
+  console.log("%c##########################################", "color: red");
+  console.log(
+    "IsOpen before handling: " + `%c${filterMenuIsOpen}`,
+    `color: ${filterMenuIsOpen ? "lime" : "#dd01dd"}`
+  );
   if (filterMenuIsOpen) {
     closeFilterClassMenu();
   } else {
     openFilterClassMenu();
   }
+  console.log(
+    "IsOpen after handling: " + `%c${filterMenuIsOpen}`,
+    `color: ${filterMenuIsOpen ? "lime" : "#dd01dd"}`
+  );
 });
 
 document.querySelectorAll(".filter-class-option").forEach((option) => {
@@ -174,13 +184,11 @@ document.querySelectorAll(".filter-class-option").forEach((option) => {
 });
 
 function filterDpsByClass(playerClass, classText) {
-  document.removeEventListener("click", outsideClickListener);
-
   document.querySelectorAll(".player-element").forEach((playerElement) => {
     if (playerElement.classList.contains(`player-${playerClass}`)) {
-      playerElement.style.display = "flex";
+      playerElement.classList.remove("hidden");
     } else {
-      playerElement.style.display = "none";
+      playerElement.classList.add("hidden");
     }
   });
   activeClassFilter = playerClass;
@@ -192,11 +200,14 @@ function filterDpsByClass(playerClass, classText) {
 
 filterClassRemoveBtn.addEventListener("click", (event) => {
   event.stopPropagation();
-  closeFilterClassMenu();
+  if (filterMenuIsOpen) {
+    closeFilterClassMenu();
+  }
   removeClassFilter();
 });
 
 function removeClassFilter() {
+  closeFilterClassMenu();
   activeClassFilter = "none";
   filterClassRemoveBtn.style.display = "none";
   filterClassName.innerText = "Filter by class";
@@ -204,23 +215,47 @@ function removeClassFilter() {
   filterClassLabelImg.classList.add("none");
 
   document.querySelectorAll(".player-element").forEach((playerElement) => {
-    playerElement.style.display = "flex";
+    playerElement.classList.remove("hidden");
   });
 }
 
-let outsideClickListener;
+/* let outsideClickListener; */
+let controller;
+
 function hideOnClickOutside(element) {
-  outsideClickListener = (event) => {
-    filterMenuIsOpen = !filterMenuIsOpen;
-    if (!element.contains(event.target) && filterMenuIsOpen) {
+  console.log("hi!");
+  const outsideClickListener = (event) => {
+    if (
+      event.target.contains(filterClassName) ||
+      event.target.contains(filterClassLabelImg) ||
+      event.target.contains(filterClassRemoveBtn)
+    ) {
+      event.stopPropagation();
+      console.log("clicked on label");
+    }
+
+    if (!element.contains(event.target)) {
       closeFilterClassMenu();
-      removeClickListener();
+      console.log("clicked outside!");
     }
   };
 
-  const removeClickListener = () => {
-    document.removeEventListener("click", outsideClickListener);
-  };
-  // event is fired immediately after adding listener somehow
-  document.addEventListener("click", outsideClickListener);
+  controller = new AbortController();
+  console.log(filterMenuIsOpen);
+
+  document.addEventListener("click", outsideClickListener, {
+    capture: true,
+    signal: controller.signal,
+  });
 }
+
+// MENU CLOSED
+// No filter applied, click label -> open menu
+// Filter applied, click label -> open menu
+// Filter applied, click X -> remove filter
+
+// MENU OPENED
+// No filter applied, click label -> close menu
+// Filter applied, click label -> close menu and keep the filter
+// Filter applied, click X -> remove filter, close menu, show ALL player elements
+// Filter applied or not, click option ->  apply filter, close menu, show selected class' player elements and hide others
