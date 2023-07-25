@@ -75,20 +75,14 @@
 }
 
 .filter {
-  /* padding: 4px; */
   display: flex;
   height: 40px;
-  /* width: auto; */
   flex-grow: 1;
   transition: 0.15s background-color;
 }
 .filter.filter-class {
-  background-color: rgb(69, 111, 248);
-  position: relative;
-}
-.filter.filter-target {
   background-color: rgb(43, 92, 252);
-  text-align: right;
+  position: relative;
 }
 
 .filter-label {
@@ -116,7 +110,7 @@
 }
 
 .filter-class-options {
-  background: rgb(111, 145, 255);
+  background: rgb(69, 111, 248);
   position: absolute;
   width: 100%;
   top: 40px;
@@ -132,7 +126,7 @@
   height: 40px;
 }
 .filter-class-options .filter-class-option:hover {
-  background-color: rgb(69, 111, 248);
+  background-color: rgb(111, 145, 255);
 }
 .filter-class-options .filter-class-option .filter-class-name {
   display: inline-flex;

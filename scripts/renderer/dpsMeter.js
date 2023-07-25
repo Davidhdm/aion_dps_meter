@@ -185,13 +185,13 @@ document.querySelectorAll(".filter-class-option").forEach((option) => {
 
 function filterDpsByClass(playerClass, classText) {
   document.querySelectorAll(".player-element").forEach((playerElement) => {
+    activeClassFilter = playerClass;
     if (playerElement.classList.contains(`player-${playerClass}`)) {
       playerElement.classList.remove("hidden");
     } else {
       playerElement.classList.add("hidden");
     }
   });
-  activeClassFilter = playerClass;
   filterClassLabelImg.classList.remove("none");
   filterClassChildImg.attributes.src.value = `images/${playerClass}.png`;
   filterClassName.innerText = classText.trim();
@@ -207,8 +207,8 @@ filterClassRemoveBtn.addEventListener("click", (event) => {
 });
 
 function removeClassFilter() {
-  closeFilterClassMenu();
   activeClassFilter = "none";
+  closeFilterClassMenu();
   filterClassRemoveBtn.style.display = "none";
   filterClassName.innerText = "Filter by class";
   filterClassChildImg.attributes.src.value = "svgs/filter.svg";

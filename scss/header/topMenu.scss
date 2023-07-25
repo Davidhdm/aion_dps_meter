@@ -32,23 +32,15 @@
 }
 
 .filter {
-  /* padding: 4px; */
   display: flex;
   height: 40px;
-  /* width: auto; */
   flex-grow: 1;
   transition: 0.15s background-color;
 
   &.filter-class {
-    background-color: $blue2;
+    background-color: $blue3;
     position: relative;
   }
-
-  &.filter-target {
-    background-color: $blue3;
-    text-align: right;
-  }
-  
 }
 
 .filter-label {
@@ -79,13 +71,14 @@
 }
 
 .filter-class-options {
-  background: $blue1;
+  background: $blue2;
   position: absolute;
   width: 100%;
   top: 40px;
   left: 0;
   display: none;
   flex-direction: column;
+
   &.open {
     display: flex;
   }
@@ -95,7 +88,7 @@
     height: 40px;
 
     &:hover {
-      background-color: $blue2;
+      background-color: $blue1;
     }
 
     .filter-class-name {
