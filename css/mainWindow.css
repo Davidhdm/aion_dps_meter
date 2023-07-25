@@ -1,47 +1,3 @@
-.app-name-container {
-  display: flex;
-  align-items: center;
-  width: calc(100vw - 80px);
-  -webkit-app-region: drag;
-}
-.app-name-container img {
-  width: 40px;
-}
-.app-name-container .app-name {
-  margin-left: 10px;
-}
-
-.window-frame {
-  height: 34px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: black;
-}
-
-.manage-app-buttons {
-  display: flex;
-  height: 100%;
-}
-.manage-app-buttons > div {
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.manage-app-buttons .minimize-app-button {
-  background-color: rgb(38, 38, 38);
-}
-.manage-app-buttons .minimize-app-button:hover {
-  background-color: rgb(56, 56, 56);
-}
-.manage-app-buttons .close-app-button {
-  background-color: rgb(253, 47, 47);
-}
-.manage-app-buttons .close-app-button:hover {
-  background-color: rgb(255, 117, 117);
-}
-
 .top-menu {
   display: flex;
   width: 100%;
@@ -92,7 +48,7 @@
   width: 100%;
 }
 .filter-label:hover {
-  background-color: rgb(111, 145, 255);
+  background-color: rgb(69, 111, 248);
 }
 
 .filter-class-img {
@@ -139,13 +95,13 @@
   width: 20px;
   height: 20px;
   margin-left: auto;
-  margin-right: 8px;
+  margin-right: 10px;
 }
 .filter-class-remove > img {
   height: 100%;
 }
 .filter-class-remove:hover {
-  background-color: rgb(255, 76, 76);
+  background-color: rgb(111, 145, 255);
 }
 
 .dpsmeter-container {
@@ -252,4 +208,4 @@ body {
   } */
 }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=mainWindow.css.map */

@@ -1,10 +1,8 @@
-@import "./variables";
-@import "./mixins";
+@import "../variables";
+@import "../mixins";
 
-@import "./header/windowFrame.scss";
-@import "./header/topMenu.scss";
-
-@import "./dps_container/dpsContainer.scss";
+@import "./topMenu.scss";
+@import "./dpsContainer.scss";
 
 body {
   background: $dark3;

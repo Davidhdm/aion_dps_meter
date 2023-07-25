@@ -50,7 +50,7 @@
   width: 100%;
 
   &:hover {
-    background-color: $blue1;
+    background-color: $blue2;
   }
 }
 
@@ -104,11 +104,11 @@
   width: 20px;
   height: 20px;
   margin-left: auto;
-  margin-right: 8px;
+  margin-right: 10px;
   & > img {
     height: 100%;
   }
   &:hover {
-    background-color: $red2;
+    background-color: $blue1;
   }
 }

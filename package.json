@@ -7,7 +7,7 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "sass-watch": "sass scss/index.scss style.css -w"
+    "sass-watch": "sass scss/mainWindow/index.scss:css/mainWindow.css scss/settingsWindow/index.scss:css/settingsWindow.css scss/common/index.scss:css/common.css -w"
   },
   "author": "DavidHdm",
   "license": "MIT",

@@ -1,0 +1,46 @@
+.app-name-container {
+  display: flex;
+  align-items: center;
+  width: calc(100vw - 80px);
+  -webkit-app-region: drag;
+}
+.app-name-container img {
+  width: 40px;
+}
+.app-name-container .app-name {
+  margin-left: 10px;
+}
+
+.window-frame {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  overflow: hidden;
+}
+
+.manage-app-buttons {
+  display: flex;
+  height: 100%;
+}
+.manage-app-buttons > div {
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.manage-app-buttons .minimize-app-button {
+  background-color: rgb(38, 38, 38);
+}
+.manage-app-buttons .minimize-app-button:hover {
+  background-color: rgb(56, 56, 56);
+}
+.manage-app-buttons .close-app-button {
+  background-color: rgb(253, 47, 47);
+}
+.manage-app-buttons .close-app-button:hover {
+  background-color: rgb(255, 117, 117);
+}
+
+/*# sourceMappingURL=common.css.map */

@@ -1,4 +1,4 @@
-import { groupBy, addAutoScroll } from "./helpers.js";
+import { groupBy, addAutoScroll } from "../helpers.js";
 import allSkills from "./allSkills.js";
 
 const dpsMeterContainer = document.querySelector(".dpsmeter-container");

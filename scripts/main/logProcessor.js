@@ -21,7 +21,7 @@ function processLogContent(logContent) {
 
 function sendDataToRenderer(data) {
   const mainWindow = BrowserWindow.getAllWindows()[0]; // Get the reference to the main window
-  mainWindow.webContents.send('sendData', data);
+  mainWindow.webContents.send('send-data', data);
 };
 
 function getSplittedLogs(logContent) {
