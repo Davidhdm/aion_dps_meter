@@ -5,6 +5,5 @@ closeAppBtn.addEventListener('click', () => {
 
 const minimizeAppBtn = document.querySelector('.minimize-app-button')
 minimizeAppBtn.addEventListener('click', () => {
-  console.log("send")
   window.bridge.send("minimize", true)
 })

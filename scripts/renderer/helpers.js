@@ -38,7 +38,6 @@ export function addAutoScroll(parent, child) {
     };
   });
   parent.addEventListener("mouseleave", () => {
-    console.log("leave");
     autoScrollAnimation.cancel();
     mouseHasLeft = true;
   });

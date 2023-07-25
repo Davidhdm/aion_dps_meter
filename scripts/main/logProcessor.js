@@ -71,7 +71,7 @@ function getSkillValue(log, skillType) {
 }
 
 function getSkillName(log, skillType) {
-  console.log(log)
+  /* console.log(log) */
   switch (skillType) {
     case 'auto_attack':
       return "Auto Attack"

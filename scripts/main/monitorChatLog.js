@@ -32,7 +32,6 @@ const handleFileChange = async () => {
     fileSize = newFileSize;
   } catch (error) {
     console.log('Error: ' + error)
-
   }
 }
 
