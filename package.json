@@ -1,5 +1,5 @@
 {
-  "name": "dpsmeter",
+  "name": "numeter",
   "version": "1.0.0",
   "description": "Aion DPS meter",
   "main": "main.js",
