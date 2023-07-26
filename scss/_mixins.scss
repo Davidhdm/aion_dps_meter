@@ -1,0 +1,15 @@
+@mixin base-btn($color, $bg, $bg-hover, $bg-active) {
+  height: 40px;
+  font-size: 16px;
+  padding: 0px 15px;
+  background-color: $bg;
+  border: none;
+  color: $color;
+
+  &:hover {
+    background-color: $bg-hover;
+  }
+  &:active {
+    background-color: $bg-active;
+  }
+}

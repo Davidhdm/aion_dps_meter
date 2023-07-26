@@ -37,3 +37,46 @@ body {
     background-color: $dark2;
   }
 }
+
+.chatlog-input-wrapper {
+  position: relative;
+  width: fit-content;
+}
+
+.text-input {
+  padding: 20px 35px 20px 12px;
+}
+
+.file-input {
+  position: absolute;
+  right: 5px;
+  top: 25%;
+}
+
+.apply-chatlog-btn {
+  position: absolute;
+  height: 40px;
+  font-size: 16px;
+  padding: 0px 15px;
+  background-color: $dark2;
+  border: none;
+  color: white;
+
+  &:hover {
+    background-color: $dark1;
+  }
+  &:active {
+    background-color: $dark3;
+  }
+}
+
+.chatlog-error {
+  color: $red3;
+  font-size: 14px;
+  position: absolute;
+  top: 45px;
+  left: 0;
+  &.hidden {
+    display: none;
+  }
+}

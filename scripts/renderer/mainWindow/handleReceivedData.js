@@ -3,7 +3,7 @@ import allSkills from "./allSkills.js";
 
 const dpsMeterContainer = document.querySelector(".dpsmeter-container");
 
-window.bridge.receive("sendData", (data) => {
+window.bridge.receive("send-data", (data) => {
   try {
     let groupedByPlayer = groupBy(data, "player");
     mergeGroupedData(globalThis.processedData, groupedByPlayer);
@@ -98,7 +98,7 @@ function createPlayerElement(player) {
   playerElement.className = `player-element player-${player.class} overflow-autoscroll-parent`;
   playerElement.id = `player-id-${player.id}`;
   playerClass.className = "player-class";
-  playerClass.innerHTML = `<img src="images/${player.class}.png">`;
+  playerClass.innerHTML = `<img src="../images/${player.class}.png">`;
   playerName.className = "player-name";
   playerNameSpan.className = "overflow-autoscroll";
   playerNameSpan.innerText = player.name;

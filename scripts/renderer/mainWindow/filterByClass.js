@@ -23,20 +23,11 @@ function closeFilterClassMenu() {
 }
 
 filterClassBtn.addEventListener("click", () => {
-  /* console.log("%c##########################################", "color: red");
-  console.log(
-    "IsOpen before handling: " + `%c${filterMenuIsOpen}`,
-    `color: ${filterMenuIsOpen ? "lime" : "#dd01dd"}`
-  ); */
   if (filterMenuIsOpen) {
     closeFilterClassMenu();
   } else {
     openFilterClassMenu();
   }
-  /* console.log(
-    "IsOpen after handling: " + `%c${filterMenuIsOpen}`,
-    `color: ${filterMenuIsOpen ? "lime" : "#dd01dd"}`
-  ); */
 });
 
 document.querySelectorAll(".filter-class-option").forEach((option) => {
@@ -85,7 +76,6 @@ function removeClassFilter() {
 let controller;
 
 function hideOnClickOutside(element) {
-  /* console.log("hi!"); */
   const outsideClickListener = (event) => {
     if (
       event.target.contains(filterClassName) ||
@@ -93,12 +83,10 @@ function hideOnClickOutside(element) {
       event.target.contains(filterClassRemoveBtn)
     ) {
       event.stopPropagation();
-      /* console.log("clicked on label"); */
     }
 
     if (!element.contains(event.target)) {
       closeFilterClassMenu();
-      /* console.log("clicked outside!"); */
     }
   };
 

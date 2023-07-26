@@ -9,7 +9,6 @@ function processLogContent(logContent) {
 
       if (['auto_attack', 'dmg_skill', 'dmg_unknown'].includes(logType)) {
         const builtSkillData = buildSkillData(log, logType)
-        /* console.log(builtSkillData) */
         processedSkillData.push(builtSkillData)
       }
     })
@@ -71,7 +70,6 @@ function getSkillValue(log, skillType) {
 }
 
 function getSkillName(log, skillType) {
-  /* console.log(log) */
   switch (skillType) {
     case 'auto_attack':
       return "Auto Attack"

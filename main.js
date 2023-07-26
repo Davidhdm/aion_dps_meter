@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const nodePath = require("path");
-require("./scripts/main/monitorChatLog.js");
+require("./scripts/main/index.js");
 require("electron-reload")(__dirname);
 
 let windows = {};
@@ -71,11 +71,10 @@ function createSettingsWindow() {
     // Place on left side
     newWinPosX = adjacentWindowBounds.x - settingsWinWidth - separation
   }
-  
   let newWinPosY = adjacentWindowBounds.y
-  console.log(outOfScreenRight)
 
   const win = new BrowserWindow({
+    icon: "images/pollo-settings.jpg",
     x: newWinPosX,
     y: newWinPosY,
     frame: false,
@@ -94,7 +93,6 @@ function createSettingsWindow() {
 
 ipcMain.on("open-settings", () => {
   if (!windows.settings) {
-    console.log("create settings window");
     windows.settings = createSettingsWindow();
   }
 });

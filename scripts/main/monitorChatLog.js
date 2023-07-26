@@ -1,12 +1,16 @@
-const { processLogContent } = require('./logProcessor.js')
-const fs = require('fs')
+const { processLogContent } = require("./logProcessor.js");
+const fs = require("fs");
+const { ipcMain } = require("electron");
+const { createSettingsFile, readSettings } = require("./manageSettings.js");
 
-const logFile = 'D:/AionRepublic/aion/Chat.log'
+createSettingsFile();
+let logFile = readSettings().chatlog_location;
+
 let logExists = fs.existsSync(logFile);
 let fileSize;
 
 const handleFileChange = async () => {
-  if (!fs.existsSync(logFile)) return
+  if (!fs.existsSync(logFile)) return;
   try {
     const newFileSize = fs.statSync(logFile).size;
     const bytesToRead = newFileSize - fileSize;
@@ -15,10 +19,11 @@ const handleFileChange = async () => {
     if (bytesToRead > 0) {
       // create new buffer of the same size than the new content to read
       const buffer = Buffer.alloc(bytesToRead);
-      const fileDescriptor = fs.openSync(logFile, 'r');
+      const fileDescriptor = fs.openSync(logFile, "r");
 
       // read the new content and write it into the buffer
-      fs.readSync(fileDescriptor,
+      fs.readSync(
+        fileDescriptor,
         buffer,
         0,
         bytesToRead, // length of content to read
@@ -26,14 +31,14 @@ const handleFileChange = async () => {
       );
       fs.closeSync(fileDescriptor);
 
-      const newContent = buffer.toString('utf8');
+      const newContent = buffer.toString("utf8");
       processLogContent(newContent);
     }
     fileSize = newFileSize;
   } catch (error) {
-    console.log('Error: ' + error)
+    console.log("Error: " + error);
   }
-}
+};
 
 const debounce = (func, delay) => {
   let timerId;
@@ -48,18 +53,18 @@ const debounce = (func, delay) => {
 
 const debouncedHandleFileChange = debounce(handleFileChange, 10);
 
-async function checkLogExistence() {
-  while (!logExists) {
-    logExists = fs.existsSync(logFile);
-    console.log('log exists: ' + logExists)
-    await new Promise(resolve => setTimeout(resolve, 1000));
-  }
-  return Promise.resolve()
+function startWatchingFile() {
+  fileSize = fs.statSync(logFile).size;
+  fs.watch(logFile, debouncedHandleFileChange);
 }
 
-checkLogExistence().then(() => {
-  fileSize = fs.statSync(logFile).size;
-  fs.watch(logFile, debouncedHandleFileChange)
-})
+if (logExists) {
+  startWatchingFile();
+} else {
+  ipcMain.on("valid-chatlog-location", (arg) => {
+    logFile = arg;
+    startWatchingFile();
+  });
+}
 
-module.exports
+module.exports;
