@@ -56,11 +56,32 @@ ipcMain.on("minimize", (event, windowName) => {
 });
 
 function createSettingsWindow() {
+  const allWindows = BrowserWindow.getAllWindows()
+  const adjacentWindow = allWindows[allWindows.length - 1]
+  const adjacentWindowBounds = adjacentWindow.getBounds()
+  
+  const settingsWinWidth = 600;
+  const settingsWinHeight = 600;
+  const separation = 8;
+
+  let newWinPosX = adjacentWindowBounds.x + adjacentWindowBounds.width + separation
+  let outOfScreenRight = newWinPosX + settingsWinWidth > 0
+  // If window is out of screen by right side
+  if (outOfScreenRight) {
+    // Place on left side
+    newWinPosX = adjacentWindowBounds.x - settingsWinWidth - separation
+  }
+  
+  let newWinPosY = adjacentWindowBounds.y
+  console.log(outOfScreenRight)
+
   const win = new BrowserWindow({
+    x: newWinPosX,
+    y: newWinPosY,
     frame: false,
-    width: 600,
-    height: 600,
-    /* resizable: false, */
+    width: settingsWinWidth,
+    height: settingsWinHeight,
+    resizable: false,
     webPreferences: {
       nodeIntegration: true,
       preload: nodePath.join(__dirname, "preload.js"),

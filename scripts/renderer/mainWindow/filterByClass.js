@@ -56,7 +56,7 @@ function filterDpsByClass(playerClass, classText) {
     }
   });
   filterClassLabelImg.classList.remove("none");
-  filterClassChildImg.attributes.src.value = `images/${playerClass}.png`;
+  filterClassChildImg.attributes.src.value = `../images/${playerClass}.png`;
   filterClassName.innerText = classText.trim();
   filterClassRemoveBtn.style.display = "flex";
 }
@@ -74,7 +74,7 @@ function removeClassFilter() {
   closeFilterClassMenu();
   filterClassRemoveBtn.style.display = "none";
   filterClassName.innerText = "Filter by class";
-  filterClassChildImg.attributes.src.value = "svgs/filter.svg";
+  filterClassChildImg.attributes.src.value = "../svgs/filter.svg";
   filterClassLabelImg.classList.add("none");
 
   document.querySelectorAll(".player-element").forEach((playerElement) => {

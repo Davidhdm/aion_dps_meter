@@ -1,4 +1,4 @@
-.app-name-container {
+.window-name-container {
   display: flex;
   align-items: center;
   width: calc(100vw - 80px);
@@ -7,7 +7,7 @@
     width: 40px;
   }
 
-  .app-name {
+  .window-name {
     margin-left: 10px;
   }
   -webkit-app-region: drag;
@@ -22,7 +22,7 @@
   overflow: hidden;
 }
 
-.manage-app-buttons {
+.manage-window-buttons {
   display: flex;
   height: 100%;
 
@@ -33,7 +33,7 @@
     justify-content: center;
   }
 
-  .minimize-app-button {
+  .minimize-btn {
     background-color: $dark2;
 
     &:hover {
@@ -41,7 +41,7 @@
     }
   }
 
-  .close-app-button {
+  .close-btn {
     background-color: $red3;
 
     &:hover {

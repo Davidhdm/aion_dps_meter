@@ -1,12 +1,12 @@
-const closeAppBtn = document.querySelector('.close-app-button')
-closeAppBtn.addEventListener('click', () => {
-  window.bridge.send("close-all")
-})
+const closeBtn = document.querySelector(".close-btn");
+closeBtn.addEventListener("click", () => {
+  window.bridge.send("close-all");
+});
 
-const minimizeAppBtn = document.querySelector('.minimize-app-button')
-minimizeAppBtn.addEventListener('click', () => {
-  window.bridge.send("minimize-all")
-})
-minimizeAppBtn.addEventListener('auxclick', () => {
-  window.bridge.send("minimize", "main")
-})
+const minimizeBtn = document.querySelector(".minimize-btn");
+minimizeBtn.addEventListener("click", () => {
+  window.bridge.send("minimize-all");
+});
+minimizeBtn.addEventListener("auxclick", () => {
+  window.bridge.send("minimize", "main");
+});
