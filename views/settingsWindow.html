@@ -28,17 +28,27 @@
 
   <main class="settings-container">
     <form name="chatlog-form">
-      <label for="chatlog-text-input">
+      <label class="chatlog-input-label" for="chatlog-text-input">
         Chat.log location
-        <div class="chatlog-input-wrapper">
-          <input type="text" placeholder="PathToGameRoot/Chat.log" name="chatlog-text-input" id="chatlog-text-input" class="text-input">
-          <input type="file" id="chatlog-file-input" class="file-input" accept=".log" name="chatlog-file-input">
-          <button type="submit" class="apply-chatlog-btn">Apply</button>
-          <span class="chatlog-error hidden">This is not a Chat.log file.<br><!--You should find it in your Aion root folder, the same path where folders such as "bin32", "bin64", "l10n", etc. are --></span>
-        </div>
       </label>
-      
+      <div class="chatlog-input-wrapper">
+        <input type="text" placeholder="PathToGameRoot/Chat.log" name="chatlog-text-input" id="chatlog-text-input"
+          class="text-input">
+        <input type="file" id="chatlog-file-input" class="file-input" accept=".log" name="chatlog-file-input">
+        <button type="submit" class="apply-chatlog-btn">Apply</button>
+        <span class="chatlog-error hidden"></span>
+      </div>
     </form>
+    <!-- <form name="other-settings-form" class="other-settings-form">
+      <label for="run-on-startup" class="checkbox-label">Run NuMeter on Windows startup
+        <input id="run-on-startup" type="checkbox" checked="checked">
+        <span class="checkmark"></span>
+      </label>
+      <div class="other-settings-buttons">
+        <button class="save-settings-btn" type="submit">Save</button>
+        <button class="cancel-settings-btn" type="button">Cancel</button>
+      </div>
+    </form> -->
   </main>
   <script src="../scripts/renderer/settingsWindow/index.js" type="module"></script>
 </body>

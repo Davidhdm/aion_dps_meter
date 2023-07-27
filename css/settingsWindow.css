@@ -35,6 +35,7 @@ body {
 
 .chatlog-input-wrapper {
   position: relative;
+  margin-top: 10px;
   width: fit-content;
 }
 
@@ -53,15 +54,15 @@ body {
   height: 40px;
   font-size: 16px;
   padding: 0px 15px;
-  background-color: rgb(38, 38, 38);
+  background-color: rgb(43, 92, 252);
   border: none;
   color: white;
 }
 .apply-chatlog-btn:hover {
-  background-color: rgb(56, 56, 56);
+  background-color: rgb(111, 145, 255);
 }
 .apply-chatlog-btn:active {
-  background-color: rgb(18, 18, 18);
+  background-color: rgb(69, 111, 248);
 }
 
 .chatlog-error {
@@ -70,9 +71,64 @@ body {
   position: absolute;
   top: 45px;
   left: 0;
+  transition: 0.15s opacity linear;
+  opacity: 1;
+  /* display: block; */
 }
 .chatlog-error.hidden {
-  display: none;
+  transition: 0.05s opacity linear;
+  opacity: 0;
+  /* display: none; */
+}
+
+.settings-container {
+  padding: 20px;
+}
+
+.chatlog-input-label {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.other-settings-form {
+  margin-top: 40px;
+}
+
+.save-settings-btn,
+.cancel-settings-btn {
+  height: 40px;
+  font-size: 16px;
+  padding: 0px 15px;
+  width: 90px;
+  border: none;
+  color: white;
+}
+
+.save-settings-btn {
+  background-color: rgb(43, 92, 252);
+}
+.save-settings-btn:hover {
+  background-color: rgb(111, 145, 255);
+}
+.save-settings-btn:active {
+  background-color: rgb(69, 111, 248);
+}
+
+.cancel-settings-btn {
+  margin-left: 20px;
+  background-color: rgb(253, 47, 47);
+}
+.cancel-settings-btn:hover {
+  background-color: rgb(255, 117, 117);
+}
+.cancel-settings-btn:active {
+  background-color: rgb(255, 76, 76);
+}
+
+.other-settings-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 /*# sourceMappingURL=settingsWindow.css.map */

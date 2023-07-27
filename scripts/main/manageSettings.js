@@ -1,19 +1,20 @@
 const fs = require("fs");
 const { ipcMain, BrowserWindow } = require("electron");
 
+const defaultSettings = JSON.stringify({
+  chatlog_location: "",
+  // run_on_startup: false,
+});
+
 function createSettingsFile() {
   let settingsExist = fs.existsSync("settings.json");
   if (!settingsExist) {
-    fs.writeFileSync(
-      "settings.json",
-      JSON.stringify({ chatlog_location: "" }),
-      (error) => {
-        if (error) {
-          console.error(error);
-          throw error;
-        }
+    fs.writeFileSync("settings.json", defaultSettings, (error) => {
+      if (error) {
+        console.error(error);
+        throw error;
       }
-    );
+    });
   }
 }
 
@@ -26,6 +27,13 @@ function readSettings() {
   }
 }
 
+function updateSettings(newSettings) {
+  const currentSettings = readSettings();
+  let updatedSettings = {...currentSettings, ...newSettings}
+
+  fs.writeFileSync("settings.json", JSON.stringify(updatedSettings));
+}
+
 ipcMain.on("update-chatlog-location", (event, arg) => {
   const logExists = fs.existsSync(arg);
   if (logExists) {
@@ -36,20 +44,23 @@ ipcMain.on("update-chatlog-location", (event, arg) => {
         throw error;
       }
     });
-    ipcMain.emit("valid-chatlog-location", arg)
+    ipcMain.emit("valid-chatlog-location", arg);
   } else {
     BrowserWindow.getAllWindows()[0].webContents.send("file-doesnt-exist");
   }
 });
 
-ipcMain.on("get-chatlog-location", (event) => {
-  const chatlogLocation = readSettings().chatlog_location;
-  console.log(chatlogLocation);
+ipcMain.on("get-settings", (event) => {
+  settings = readSettings();
   BrowserWindow.getAllWindows()[0].webContents.send(
-    "send-chatlog-location",
-    chatlogLocation
+    "send-settings",
+    settings
   );
 });
+
+ipcMain.on("update-settings", (event, newSettings) => {
+  updateSettings(newSettings);
+})
 
 module.exports = {
   readSettings,
